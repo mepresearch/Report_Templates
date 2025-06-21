@@ -9,46 +9,100 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;600&display=swap" rel="stylesheet">
     
+    
     <style>
         @page {
             size: A4;
             margin: 15mm;
         }
 
-        .map div{
-            height: 3.50in !important;
-            width: 5.10in !important;
-            padding-bottom: 0px !important;
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 16px;
+            line-height: 1.7em;
+            font-weight: 600;
+        }
+
+        .nr-full-body {
+            width: 7.47in;
+            margin: auto;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Ensure all images scale properly */
+        .map-container img,
+        .map-container iframe,
+        .map-container canvas,
+        .voltage-container img,
+        .voltage-container iframe,
+        .voltage-container canvas {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: auto;
+        }
+
+        /* Style for map container */
+        .map-container {
+            width: 100%;
+            height: 442px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(255, 255, 255);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Style for voltage graph container */
+        .voltage-container {
+            width: 100%;
+            height: 240px;
+            margin: 20px 0;
+            background-color: rgb(255, 255, 255);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media print {
+            .map-container,
+            .voltage-container {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
         }
     </style>
 
     <title>ER Collared Report Page 1</title>
 </head>
-<body style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 16px;line-height: 1.7em;font-weight: 600;">
-    <div class="nr-full-body" style="padding: 40px;margin: auto;box-sizing: border-box;width: 7.47in;">
-        <div class="container" style="padding: 0;margin: 0;box-sizing: border-box;padding-top: 15px;border-top: 2px solid #868282;overflow: hidden;display: flex;">
-            <!-- range map -->
-            <div class="nr-map map" style="padding: 0;margin: 0;box-sizing: border-box;float: left;overflow: hidden;width: 5.10in;height: 3.50in;background-color: rgb(206, 250, 235);margin-right: 7px;display: flex;">
-                {{ mov_map }}
+<body style="padding: 0; margin: 0; box-sizing: border-box;">
+    <div class="nr-full-body">
+
+        <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 25px; display: inline-block;">{{ name }}</span>
+            <img src="{{ logo }}" alt="" height="100%" width="auto">
+        </div>
+
+        Region: {{ region }}<br>
+
+        <!-- Map Container -->
+        <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
+            <div class="map-container">
+                {{ speed_map_dir }}
             </div>
-            <!-- range area -->
-            <!-- <div class="nr-rang" style="padding: 0;margin: 0;box-sizing: border-box;float: left;overflow: hidden;width: 2.15in;height:3.50in;margin-left: 7px;background: #c7c6ca;">
-                <ul style="padding: 10px;margin: 0;box-sizing: border-box;">
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 16px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;"><span style="padding: 0;margin: 0;box-sizing: border-box;color: #820422;font-size: 20px;font-weight: 600;">Range Area:</span></li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{ MCP }} km<sup style="padding: 0;margin: 0;box-sizing: border-box;">2</sup> (MCP)</li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{ ETD }} km<sup style="padding: 0;margin: 0;box-sizing: border-box;">2</sup> (ETD)</li>
-                </ul>
-                <ul style="padding: 10px;margin: 0;box-sizing: border-box;">
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 16px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">
-                        <span style="padding: 0;margin: 0;box-sizing: border-box;color: #820422;font-size: 20px;font-weight: 600;">Land Use:</span>
-                    </li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{crop_raid_percent}}% time in agriculture</li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{national_pa_use}}% time in national protected areas</li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{community_pa_use}}% time in community conservancies</li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{kenya_use}}% time in kenya</li>
-                    <li style="padding: 0;margin: 0;box-sizing: border-box;font-family: 'Titillium Web', sans-serif;font-size: 12px;line-height: 1.7em;font-weight: 500;list-style: none;color: #2c2c2c;">{{unprotected}}% time in unprotected areas</li>
-                </ul>
-            </div> -->
+        </div>
+
+        <!-- Voltage Plot Container -->
+        <div class="voltage-container">
+            {{ voltage_plot }}
         </div>
     </div>
 </body>
