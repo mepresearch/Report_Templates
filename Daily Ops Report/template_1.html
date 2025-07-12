@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;600&display=swap" rel="stylesheet">
     
-    
     <style>
         @page {
             size: A4;
@@ -81,31 +80,27 @@
         }
     </style>
 
-    <title>ER Collared Report Page 1</title>
+    <title>Daily Ops Report Page 1</title>
 </head>
 <body style="padding: 0; margin: 0; box-sizing: border-box;">
     <div class="nr-full-body">
 
         <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 25px; display: inline-block;">{{ name }}</span>
-            <img src="{{ logo }}" alt="" height="100%" width="auto">
+            <img src="{{ logo }}" alt="" height="100%" width="auto" >
         </div>
-
-        Region: {{ region }}<br>
+        <span style="font-size: 25px; display: inline-block;">{{ name }}</span>
+        <br>
 
         <!-- Map Container -->
         <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
             <div class="map-container">
-                {{ speed_map_dir }}
+                {{ speed_map }}
             </div>
         </div>
-
-        <!-- Voltage Plot Container -->
-        <div class="voltage-container">
-            {{ voltage_plot }}
-        </div>
-        <div class="voltage-container"> 
-            <h4>{{ name }}:{{ind_event}} Events Alerts </h4>
+        <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
+            <div class="map-container">
+                {{ tracks_map }}
+            </div>
         </div>
     </div>
 </body>
