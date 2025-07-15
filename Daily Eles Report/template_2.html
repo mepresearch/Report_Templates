@@ -22,6 +22,15 @@
             line-height: 1.7em;
             font-weight: 600;
         }
+        .subjects {
+            overflow: hidden;
+            background-color:#99f8f8;
+            width: 7.48in;
+            height: 1.18in;
+        }
+        .subjects .plotly-graph-div{
+            height: 1.18in !important;
+        }
 
         .nr-full-body {
             width: 7.47in;
@@ -68,11 +77,11 @@
             </div>
         </div>
         <!-- Event Plot-->
-        <div class="event-container">
+        <div class="subjects">
             {{ event_plot }}
         </div>
         <!-- Event Timeline -->
-        <div class="event-container">
+        <div class="subjects">
             {{ event_pointer }}
         </div>
     </div>

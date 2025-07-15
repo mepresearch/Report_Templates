@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">   
-    <link rel="preconnect" href="https://fonts.gstatic.com"  crossorigin>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;600&display=swap" rel="stylesheet">
-
-    <style>
+    
+   <style>
         @page {
             size: A4;
             margin: 15mm;
@@ -47,13 +46,18 @@
             font-size: 30px;
             margin-bottom: 30px;
         }
-        /* Ensure all images scale properly */
-        .map-container img,
-        .map-container iframe,
-        .map-container canvas,
-        .voltage-container img,
-        .voltage-container iframe,
-        .voltage-container canvas {
+        .subjects {
+            overflow: hidden;
+            background-color:#99f8f8;
+            width: 7.0in;
+            height: 2.0in;
+        }
+        .subjects .plotly-graph-div{
+            height: 1.18in !important;
+        }
+        .logo-container img,
+        .logo-container iframe,
+        .logo-container canvas {
             max-width: 100%;
             max-height: 100%;
             width: auto;
@@ -62,9 +66,7 @@
             display: block;
             margin: auto;
         }
-
-        /* Style for voltage graph container */
-        .voltage-container {
+        .logo-container {
             width: 100%;
             height: 240px;
             margin: 20px 0;
@@ -76,8 +78,7 @@
         }
 
         @media print {
-            .map-container,
-            .voltage-container {
+            .logo-container {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
@@ -88,7 +89,7 @@
 </head>
 <body>
     <div class="nr-full-body">
-        <div class="voltage-container">
+        <div class="logo-container">
             <img src="{{ logo }}" alt="" height="100%" width="auto">
         </div>
         <h1 class="report-title">Operations Status Report</h1>
@@ -97,11 +98,14 @@
         <p class="info">from</p>
         <p class="info">{{ period }}</p>
         <p class="info">with</p>
-        <p class="info">{{patrols}} Patrols Covering & {{ patrol_dist }} kms in {{patrol_time}} hours.</p>
+        <p class="info">{{patrols}} Patrols Covering {{ patrol_dist }} kms in {{patrol_time}} hours.</p>
         <hr>
-
-        <div class="voltage-container">
-            <img src="{{ event_table }}" alt="" height="100%" width="auto">
+           
+        <div class="subjects">
+            {{ event_summary }}"
+        </div>
+        <div class="subjects">
+            {{ event_team }}
         </div>
     </div>
 </body>
