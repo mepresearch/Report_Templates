@@ -21,38 +21,26 @@
             line-height: 1.7em;
             font-weight: 600;
         }
-
         .nr-full-body {
-            width: 7.47in;
+            width: 8.0in;
             margin: auto;
             padding: 40px;
             box-sizing: border-box;
         }
-        .graph {
+        .map-container img,
+        .map-container iframe,
+        .map-container canvas,
+        .map-container {
+            width: 100%;
+            height: 442px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(255, 255, 255);
             overflow: hidden;
-            background-color:#99f8f8;
-            width: 7.0in;
-            height: 2.0in;
-        }
-        .graph .plotly-graph-div{
-            height: 1.18in !important;
-        }
-        .nr_map {
-            height: 4.55in;
-            width: 5.50in;
-            background-color: rgb(206, 250, 235);
-            align-items: center;
-            margin-left: 7px;
             display: flex;
-        }
-        .subjects {
-            overflow: hidden;
-            background-color:#99f8f8;
-            width: 7.0in;
-            height: 2.0in;
-        }
-        .subjects .plotly-graph-div{
-            height: 1.18in !important;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 
@@ -60,16 +48,18 @@
 </head>
 <body style="padding: 0; margin: 0; box-sizing: border-box;">
     <div class="nr-full-body">
-        <div class="container" style="padding: 0;margin: 0;box-sizing: border-box;overflow: hidden;display: flex;">
-           <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: 'candara'; font-size: 16px; font-weight: 600;">Team : {{name}}</span>
-                <img src="{{ logo }}" alt="Logo" height="100%" width="auto">
-            </div>
-            <br>
-            <div class="nr-map">
+        <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
+            <img src="{{ logo }}" alt="" height="100%" width="auto">
+        </div>
+        <div style="font-family: 'candara', sans-serif; font-size: 16px; font-weight: 600;">{{name}}</div>
+        <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
+            <div class="map-container">
                 {{ speed_map }}
             </div>
-            <div class="nr_map">
+        </div>
+        <br>
+        <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
+            <div class="map-container">
                 {{ tracks_map }}
             </div>
         </div>
