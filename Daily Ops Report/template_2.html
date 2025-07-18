@@ -36,9 +36,7 @@
         .map-container canvas,
         .map-container {
             width: 100%;
-            height: 350px;
-            margin: 0;
-            padding: 0;
+            height: 442px;
             box-sizing: border-box;
             background-color: rgb(255, 255, 255);
             overflow: hidden;
@@ -49,7 +47,7 @@
 
         .subjects {
             overflow: hidden;
-            background-color:#99f8f8;
+            background-color:#ffffff;
             width: 7.0in;
             height: 2.5in;
         }
@@ -72,11 +70,8 @@
         <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
             <img src="{{ logo }}" alt="" height="100%" width="auto">
         </div>
-
-        <div class="container" style="padding-top: 10px; border-top: 2px solid #868282;">
-            <div class="map-container">
-                {{ event_map }}
-            </div>
+        <div class="map-container">
+            {{ event_map }}
         </div>
         <div class="subjects">
             {{ event_pointer }}
@@ -87,3 +82,4 @@
     </div>
 </body>
 </html>
+  

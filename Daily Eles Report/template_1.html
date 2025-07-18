@@ -15,7 +15,6 @@
             size: A4;
             margin: 15mm;
         }
-
         body {
             font-family: 'Titillium Web', sans-serif;
             font-size: 16px;
@@ -29,8 +28,6 @@
             padding: 40px;
             box-sizing: border-box;
         }
-
-        /* Ensure all images scale properly */
         .map-container img,
         .map-container iframe,
         .map-container canvas,
@@ -45,8 +42,6 @@
             display: block;
             margin: auto;
         }
-
-        /* Style for map container */
         .map-container {
             width: 100%;
             height: 442px;
@@ -59,12 +54,18 @@
             align-items: center;
             justify-content: center;
         }
-
-        /* Style for voltage graph container */
+        .subjects {
+            overflow: hidden;
+            background-color:#99f8f8;
+            width: 7.0in;
+            height: 2.0in;
+        }
+        .subjects .plotly-graph-div{
+            height: 1.18in !important;
+        }
         .voltage-container {
-            width: 100%;
-            height: 240px;
-            margin: 20px 0;
+            height: 2.0in; 
+            width: 7.0in;
             background-color: rgb(255, 255, 255);
             overflow: hidden;
             display: flex;
@@ -85,28 +86,22 @@
 </head>
 <body style="padding: 0; margin: 0; box-sizing: border-box;">
     <div class="nr-full-body">
-
         <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 25px; display: inline-block;">{{ name }}</span>
             <img src="{{ logo }}" alt="" height="100%" width="auto">
         </div>
-
-        Region: {{ region }}<br>
-
-        <!-- Map Container -->
-        <div class="container" style="padding-top: 15px; border-top: 2px solid #868282;">
-            <div class="map-container">
-                {{ speed_map_dir }}
-            </div>
+        <div style="font-family: 'candara', sans-serif; font-size: 16px; font-weight: 600;">Region: {{ region }}</div>
+        <br>
+        <div class="map-container">
+            {{ speed_map_dir }}
         </div>
-
-        <!-- Voltage Plot Container -->
         <div class="voltage-container">
             {{ voltage_plot }}
         </div>
-        <div class="voltage-container"> 
-            <h4>{{ name }}:{{ind_event}} Events Alerts </h4>
+        <div class="voltage-container">
+            {{ speed_graph }}
         </div>
+        
     </div>
 </body>
 </html>
