@@ -30,7 +30,7 @@
             box-sizing: border-box;
         }
 
-        h1.report-title {
+        .report-title {
             text-align: center;
             font-size: 45px;
             margin-bottom: 10px;
@@ -89,11 +89,8 @@
         <div class="voltage-container">
             <img src="{{ logo }}" alt="" height="100%" width="auto">
         </div>
-        <h1 class="report-title">{{subjects_reporting}} Collars Status Report 
-            {% if inactive == 1 %}
-                <span>({{inactive}} Inactive Collars)</span>
-            {% endif %}
-        </h1>
+        <h1 class="report-title">Collar Status Report</h1>
+        <h3 class="report-date">{{subjects_reporting}} Active & {{inactive}} Inactive</h3>
         <p class="report-date">{{ today }}</p>
         <p class="info">{{ total_events }} Event</p>
         <p class="info">for</p>
@@ -104,6 +101,12 @@
         <div class="voltage-container">
             <img src="{{ event_table }}" alt="" height="100%" width="auto">
         </div>
-    </div>
+        <hr>
+        <h2>Inactive Subjects</h2>
+        <ul>
+            {% for subject in active_subjects %}
+                <li>{{ subject }}</li>
+            {% endfor %}
+        </ul>
 </body>
 </html>
