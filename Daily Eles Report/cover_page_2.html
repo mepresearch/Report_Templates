@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;600&display=swap" rel="stylesheet">
+    
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 16px;
+            line-height: 1.7em;
+            font-weight: 600;
+        }
+
+        .nr-full-body {
+            width: 7.47in;
+            margin: auto;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        p.info {
+            text-align: center;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+    </style>
+
+    <title>Cover Page2</title>
+</head>
+<body style="padding: 0; margin: 0; box-sizing: border-box;">
+    <div class="nr-full-body">
+        <div style="height: 0.54in; width: 4.11in; display: flex; justify-content: space-between; align-items: center;">
+            <span class="text">Inactive Subjects</span>
+            <img src="{{ logo }}" alt="" height="100%" width="auto">
+        </div>
+        <hr>
+        <ul>
+            {% for subject in inactive_subjects %}
+                <li>{{ subject }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
